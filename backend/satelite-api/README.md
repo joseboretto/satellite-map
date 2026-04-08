@@ -9,13 +9,17 @@
 
 ## Environment variables
 
+The database is hosted on [Neon](https://neon.tech) and provisioned via the Vercel Marketplace.
+Pull the values from Vercel for local development:
+
 ```shell
-DATABASE_DIALECT=postgresql
-DATABASE_HOSTNAME=localhost
-DATABASE_PORT=5432
-DATABASE_NAME=satellite
-DATABASE_PASSWORD=satellite_api_password
-DATABASE_USERNAME=satellite_api_user
+vercel env pull .env
+```
+
+Or set manually:
+
+```shell
+DATABASE_URL=postgresql://user:password@host/dbname?sslmode=require
 DEBUG_MODE=true
 ```
 
@@ -27,11 +31,12 @@ DEBUG_MODE=true
 ```shell
 uv sync
 ```
-4. Run the application
+4. Pull environment variables from Vercel
 ```shell
-DATABASE_DIALECT=postgresql DATABASE_HOSTNAME=localhost DATABASE_PORT=5432 \
-DATABASE_NAME=satellite DATABASE_PASSWORD=satellite_api_password \
-DATABASE_USERNAME=satellite_api_user DEBUG_MODE=true \
+vercel env pull .env
+```
+5. Run the application
+```shell
 uv run fastapi dev
 ```
 5. Test the application
@@ -42,11 +47,12 @@ curl http://127.0.0.1:8000/v1/healthcheck/
 ## With IntelliJ IDEA
 
 1. Add UV as Python interpreter
-2. Configure run configuration with environment variables
+2. Run `vercel env pull .env` to get the env vars locally
+3. Configure run configuration with environment variables
    1. Set uv as interpreter
    2. Module name: fastapi
    3. Parameters: dev main.py
-   4. Environment variables: DATABASE_DIALECT=postgresql;DATABASE_HOSTNAME=localhost;DATABASE_PORT=5432;DATABASE_NAME=satellite;DATABASE_PASSWORD=satellite_api_password;DATABASE_USERNAME=satellite_api_user;DEBUG_MODE=true;
+   4. Environment variables: load from `.env` (or paste `DATABASE_URL=...;DEBUG_MODE=true`)
 
 # Development
 

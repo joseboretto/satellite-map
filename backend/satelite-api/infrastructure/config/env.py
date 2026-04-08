@@ -11,12 +11,7 @@ def get_env_filename():
 
 
 class EnvironmentSettings(BaseSettings):
-    DATABASE_DIALECT: str
-    DATABASE_HOSTNAME: str
-    DATABASE_NAME: str
-    DATABASE_PASSWORD: str
-    DATABASE_PORT: int
-    DATABASE_USERNAME: str
+    DATABASE_URL: str
     DEBUG_MODE: bool
 
     class Config:

@@ -13,12 +13,7 @@ env = get_environment_variables()
 # access to the values within the .ini file in use.
 config = context.config
 
-# Override sqlalchemy.url with value built from environment variables
-config.set_main_option(
-    "sqlalchemy.url",
-    f"{env.DATABASE_DIALECT}://{env.DATABASE_USERNAME}:{env.DATABASE_PASSWORD}"
-    f"@{env.DATABASE_HOSTNAME}:{env.DATABASE_PORT}/{env.DATABASE_NAME}",
-)
+config.set_main_option("sqlalchemy.url", env.DATABASE_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -56,7 +51,7 @@ def run_migrations_offline() -> None:
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
         # todo: make this config work
-        version_table_schema=env.DATABASE_NAME,
+        version_table_schema="satellite",
     )
 
     with context.begin_transaction():
