@@ -12,7 +12,7 @@ def get_env_filename():
 
 class EnvironmentSettings(BaseSettings):
     DATABASE_URL: str
-    DEBUG_MODE: bool
+    DEBUG_MODE: bool = False
 
     class Config:
         env_file = get_env_filename()
