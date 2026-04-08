@@ -1,23 +1,19 @@
-from typing import Optional, List
+from typing import List, Optional
 
-from fastapi import Depends
+from application.ports.input.satellite_service_port import SatelliteServicePort
+from application.ports.output.satellite_repository_port import SatelliteRepositoryPort
+from domain.models.satellite import Satellite
 
-from infrastructure.output.database.repositories.satelite_repository import SatelliteRepository
-from infrastructure.output.database.schema.satellite_schema import SatelliteSchema
 
+class SatelliteService(SatelliteServicePort):
 
-class SatelliteService:
-    satelliteRepository: SatelliteRepository
+    def __init__(self, repository: SatelliteRepositoryPort) -> None:
+        self._repository = repository
 
-    def __init__(
-            self, satelliteRepository: SatelliteRepository = Depends()
-    ) -> None:
-        self.satelliteRepository = satelliteRepository
-
-    def list(self,
-             name: Optional[str],
-             pageSize: Optional[int],
-             startIndex: Optional[int]) -> List[SatelliteSchema]:
-        return self.satelliteRepository.list(
-            name, pageSize, startIndex
-        )
+    def list(
+        self,
+        name: Optional[str],
+        page_size: Optional[int],
+        start_index: Optional[int],
+    ) -> List[Satellite]:
+        return self._repository.list(name, page_size, start_index)
