@@ -1,6 +1,9 @@
 import sys
 import os
 
+# Make sure we can import our application taking into account the current working directory.
+# This is needed for the application to be able to import modules from the parent directory.
+# This is needed by Vercel monorepo deployment.
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 from fastapi import FastAPI

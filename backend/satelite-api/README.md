@@ -76,6 +76,13 @@ alembic revision -m "create table satellites"
 ```
 
 - Execute alembic migration
-    - Set uv as interpreter
-    - Module name: alembic
-    - Parameters: upgrade head
+```shell
+uv run --env-file=.local.env alembic upgrade head
+```
+
+# Vercel deployment
+
+1. Links: 
+   2. https://satellite-map-git-main-jose-borettos-projects.vercel.app/api/v1/healthcheck
+   3. https://satellite-map-git-main-jose-borettos-projects.vercel.app/api/v1/satellite/
+2. 
