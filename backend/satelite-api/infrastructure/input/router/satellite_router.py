@@ -7,7 +7,7 @@ from infrastructure.config.dependencies import get_satellite_service
 from infrastructure.input.router.satellite_dtos import GetSatelliteResponse
 
 SatelliteRouter = APIRouter(
-    prefix="/v1/satellite", tags=["satellite"]
+    prefix="/api/v1/satellite", tags=["satellite"]
 )
 
 

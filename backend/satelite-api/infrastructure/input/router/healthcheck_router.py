@@ -1,11 +1,11 @@
 from fastapi import APIRouter
 
 HealthCheckRouter = APIRouter(
-    prefix="/v1/healthcheck", tags=["healthcheck"]
+    prefix="/api/v1/healthcheck", tags=["healthcheck"]
 )
 
 
-@HealthCheckRouter.get("/")
+@HealthCheckRouter.get("")
 def index():
     return {
         "status": "ok",

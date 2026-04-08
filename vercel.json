@@ -12,7 +12,7 @@
   ],
   "routes": [
     {
-      "src": "/v1/(.*)",
+      "src": "/api/v1/(.*)",
       "dest": "backend/satelite-api/main.py"
     }
   ]
