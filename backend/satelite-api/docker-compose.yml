@@ -1,0 +1,16 @@
+services:
+  postgres:
+    container_name: satellite-db
+    image: postgres:16.6-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: "satellite_api_user"
+      POSTGRES_PASSWORD: "satellite_api_password"
+      POSTGRES_DB: "satellite"
+    ports:
+      - "5432:5432"
+
+
+networks:
+  satellite-api-net:
+    driver: bridge
