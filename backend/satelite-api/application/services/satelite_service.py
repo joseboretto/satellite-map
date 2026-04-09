@@ -16,4 +16,5 @@ class SatelliteService(SatelliteServicePort):
         page_size: Optional[int],
         start_index: Optional[int],
     ) -> List[Satellite]:
+        print(f"SatelliteService-list. name: {name}, page_size: {page_size}, start_index: {start_index}")
         return self._repository.list(name, page_size, start_index)

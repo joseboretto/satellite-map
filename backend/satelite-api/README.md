@@ -48,7 +48,7 @@ uv run --env-file=.local.env fastapi dev
 5. Test the application
 
 ```shell
-curl http://127.0.0.1:8000/v1/healthcheck/
+curl http://127.0.0.1:8000/api/v1/healthcheck
 ```
 
 ## With IntelliJ IDEA
@@ -75,14 +75,19 @@ uv add <package>
 alembic revision -m "create table satellites"
 ```
 
-- Execute alembic migration
+- Execute alembic migration (local-docker)
 ```shell
 uv run --env-file=.local.env alembic upgrade head
+```
+
+- Execute alembic migration (local-vercel)
+```shell
+uv run --env-file=.env.development.local alembic upgrade head
 ```
 
 # Vercel deployment
 
 1. Links: 
    2. https://satellite-map-git-main-jose-borettos-projects.vercel.app/api/v1/healthcheck
-   3. https://satellite-map-git-main-jose-borettos-projects.vercel.app/api/v1/satellite/
+   3. https://satellite-map-git-main-jose-borettos-projects.vercel.app/api/v1/satellites/
 2. 

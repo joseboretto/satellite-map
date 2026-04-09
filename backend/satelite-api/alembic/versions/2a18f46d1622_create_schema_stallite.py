@@ -20,6 +20,7 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     """Upgrade schema."""
+    # todo: alembic use as default schema "satellite", so we need to create it manually.
     op.execute('CREATE SCHEMA IF NOT EXISTS satellite;')
     pass
 

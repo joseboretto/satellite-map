@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 
 # Make sure we can import our application taking into account the current working directory.
 # This is needed for the application to be able to import modules from the parent directory.
@@ -16,7 +16,9 @@ from infrastructure.input.router.satellite_router import SatelliteRouter
 env = get_environment_variables()
 
 # Core Application Instance
-app = FastAPI()
+app = FastAPI(
+    redirect_slashes=False
+)
 
 # Add Routers
 app.include_router(SatelliteRouter)

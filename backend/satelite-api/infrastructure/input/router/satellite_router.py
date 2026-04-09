@@ -11,13 +11,14 @@ SatelliteRouter = APIRouter(
 )
 
 
-@SatelliteRouter.get("/", response_model=List[GetSatelliteResponse])
+@SatelliteRouter.get("", response_model=List[GetSatelliteResponse])
 def index(
         name: Optional[str] = None,
         pageSize: Optional[int] = 100,
         startIndex: Optional[int] = 0,
         satelliteService: SatelliteServicePort = Depends(get_satellite_service),
 ):
+    print(f"SatelliteRouter-list. name: {name}, pageSize: {pageSize}, startIndex: {startIndex}")
     satellites = satelliteService.list(name, pageSize, startIndex)
     return [
         GetSatelliteResponse(
